@@ -1,0 +1,223 @@
+              <div class="container-fluid">
+    
+                
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Application du gestion de Park Informatique</h1>
+                </div>
+                <div class="row">
+                    <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2" >
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Nombres de matériaux de la direction</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></ng-container>
+                    <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Nombres des Commandes</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count1}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></ng-container>
+                    <ng-container *ngIf="this.roles=='ROLE_USER'">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2" >
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" *ngIf="ToShow10">
+                                                Mes matériaux</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" >{{ToShow10.matss.length}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></ng-container>
+                        <ng-container *ngIf="this.roles=='ROLE_USER'">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" *ngIf="ToShow11">
+                                                 Mes Commandes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ToShow11.commss.length}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></ng-container>
+                    <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Nombres des utilisateurs</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count2}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </ng-container>
+                    <!-- Earnings (Monthly) Card Example -->
+                    
+                  <!-- Earnings (Monthly) Card Example -->
+                  <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                        Nombres des maintenances</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{count3}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></ng-container>
+                <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2" >
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1" *ngIf="ToShow10">
+                                            Mes matériaux</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" >{{ToShow10.matss.length}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></ng-container>
+                
+                  <div class="row">
+                    <!-- Content Column -->
+                    <div class="col-lg-6 mb-4">
+                    <div *ngFor="let i of ToShow">
+                        <!-- Project Card Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">{{i.nomDirection}}</h6>
+                                
+                            </div>
+                            <div class="card-body">
+                                <ng-container *ngIf="this.roles=='ROLE_ADMIN'">     <button (click)="openPopup()" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" style="margin-bottom:20px"> Modifier le nom du direction</button>
+                                    <button (click)="openPopup1()" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" style="margin-left: 30px;margin-bottom:20px"> Ajouter un service</button>
+                                </ng-container>
+                              <div class="table-responsive text-center">
+                                <table class="table table-bordered" id="dataTable" width="100%">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>Identifiant du service</th>
+                                            <th>Nom du service</th>
+                                            <ng-container *ngIf="this.roles=='ROLE_ADMIN'">   <th>Détails </th></ng-container>
+                                          </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let j of i.servicess | orderBy: 'idService'" class="text-center text-gray-800">
+                                      <th>{{j.idService}}</th>
+                                      <th>{{j.nomService}}</th>
+                                      <ng-container *ngIf="this.roles=='ROLE_ADMIN'"><th>
+                                        <a (click)="detailSer(j.idService)" class="btn btn-shit btn-circle btn-sm">
+                                          <fa-icon [icon]="faInfoCircle"></fa-icon>
+                                      </a>
+                                      </th></ng-container>
+                                    </tr>
+                                    </tbody> 
+                               </table> 
+                              </div>
+                            </div>
+                        </div>
+                      </div>   
+                        </div>
+                        <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Autres Statistques</h6>
+                                </div>
+                                <div class="card-body text-gray-800">
+                                    <p>Les maintenances en cours : {{count7}}</p>
+                                    <p>Les commandes non traitées : {{count6}}</p>
+                                    <p>Les matériaux en maintenance : {{count5}}</p>
+                                    <p>Les matériaux endommagés : {{count4}}</p>
+                                    <p>Les matériaux en pannes : {{count10}}</p>
+                                </div>
+                            </div>
+                    </div>  
+                    </ng-container>
+                </div>
+          </div>   
+
+          <div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modfier ce service</h4>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-6" *ngIf="mat">
+            <label for="nomDirection" class="form-label">Nom du Direction</label>
+            <input type="text" class="form-control" id="nomDirection" [(ngModel)]="mat.nomDirection">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" 
+                (click)="closePopup();updateTutorial()">
+          Submit les changements
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+class="modal"
+tabindex="-1"
+role="dialog"
+[ngStyle]="{'display':displayStyle1}">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Ajouter un Service</h4>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-6">
+          <label for="nomService" class="form-label">Nom du Service</label>
+          <input type="text" class="form-control" id="nomService" [(ngModel)]="service.nomService">
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning" 
+              (click)="closePopup1();saveCommande()">
+        Ajouter
+      </button>
+    </div>
+  </div>
+</div>
+</div>

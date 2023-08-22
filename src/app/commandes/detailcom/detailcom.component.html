@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="container-fluid">
+      <h1 class="h3 mb-2 text-gray-800">Détails de la commande</h1>
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Détail</h6>
+          </div>
+          
+          <div class="card-body" *ngIf="mat">
+              
+            <p>Identifiant du cette commande : {{mat.idCom}} </p> 
+            <p>Type d'équipement de cette commande: {{mat.typeCM}}</p>
+            <p>La date de commande : {{mat.dateCommande | date:'yyyy-MM-dd'}}</p>
+            <p>Etat : {{mat.etatdecom}}</p>
+            <p>Remarque : {{mat.remarque}}</p>
+            <ng-container *ngIf="this.roles=='ROLE_ADMIN'">   <p>L'utilisateur qui a passé cette commande : {{user}}</p></ng-container>
+            
+          </div>
+          <button [disabled]="mat.etatdecom=='Acceptee'" (click)="editcom(mat.idCom)" class="btn btn-warning" style="margin-left: 250px;margin-right:250px;">
+            <fa-icon [icon]="faEdit"></fa-icon>
+            Modifier
+        </button>
+        <br>
+          
+      </div>
+  </div>
+</div>
+

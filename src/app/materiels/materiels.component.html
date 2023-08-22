@@ -1,0 +1,100 @@
+      
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <form
+        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" [(ngModel)]="typeMat" name="typeMat" class="form-control bg-light border-0 small" placeholder="Rechercher un matériel...">
+        </div>
+    </form>
+      </div>
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Liste des matériels</h1>
+          <ng-container *ngIf="this.roles=='ROLE_ADMIN'"> <a (click)="addmat()" class="d-none d-sm-inline-block btn btn-sm btn-shit shadow-sm"> Ajouter un matériel</a></ng-container>
+      </div>
+
+      
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Liste des matériels</h6>
+              </div>
+              
+                <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                    <div class="card-body">
+                <div class="table-responsive text-center">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Identifiant</th>
+                                  <th>Type du matériel</th>
+                                  <th>Marque</th>
+                                  <th>Date De Mise En Ouvre</th>
+                                  <th>Code à Barre</th>
+                                  <th>Emplacement</th>
+                                  <th>Etat</th>
+                                  <th>Infos</th>
+                                  
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i of ToShow | filter : typeMat | orderBy: 'idMateriel'">
+                                  <td>{{i.idMateriel}}</td>
+                                  <td>{{i.typeMat}}</td>
+                                  <td>{{i.marque}}</td>
+                                  <td>{{i.dateDeMiseEnOeuvre | date:'yyyy-MM-dd'}}</td>
+                                  <td>{{i.codeaBarre}}</td>
+                                  <td>{{i.emplacement}}</td>
+                                  <td>{{i.etat}}</td>
+                                  <td>
+                              <a (click)="detailMat(i.idMateriel)" target="blank" class="btn btn-shit btn-circle btn-sm">
+                                            <fa-icon [icon]="faInfoCircle"></fa-icon>
+                                        </a>
+                                        
+                                    </td>
+                              </tr>    
+                          </tbody>
+                      </table>
+                  </div></div>
+                  </ng-container>
+                  <ng-container *ngIf="this.roles=='ROLE_USER'">
+                    <div class="card-body">
+                 <div class="table-responsive text-center">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                       
+                        <thead>
+                            <tr>
+                               
+                                <th>Type du matériel</th>
+                                <th>Marque</th>
+                                <th>Date De Mise En Ouvre</th>
+                                <th>Code à Barre</th>
+                                <th>Etat</th>
+                                <th>Infos</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="ToShow1">
+                             
+                            <tr *ngFor="let j of ToShow1.matss| filter : typeMat | orderBy: 'idMateriel'">
+                                <td>{{j.typeMat}}</td>
+                                <td>{{j.marque}}</td>
+                                <td>{{j.dateDeMiseEnOeuvre | date:'yyyy-MM-dd'}}</td>
+                                <td>{{j.codeaBarre}}</td>
+                                <td>{{j.etat}}</td>
+                                    
+                                    <td>
+                                <a (click)="detailMat(j.idMateriel)" target="blank" class="btn btn-shit btn-circle btn-sm">
+                                              <fa-icon [icon]="faInfoCircle"></fa-icon>
+                                          </a>
+                                      </td>
+                            </tr>    
+                        </tbody>
+                    </table>
+                </div></div>
+                </ng-container>
+              
+          </div>
+      </div>
+  
+
+ 

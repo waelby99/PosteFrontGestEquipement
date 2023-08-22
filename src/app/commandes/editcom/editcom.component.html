@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Modifier cette commande</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modifier cette commande</h6>
+    </div>
+    <div class="card-body">
+<div>
+        <div class="col-md-6">
+            <label for="idCom" class="form-label">Identifiant du commande</label>
+            <input type="number" class="form-control" id="idCom"  [(ngModel)]="mat.idCom" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="typeCM" class="form-label">Type d'équipement de cette commande</label>
+            <input type="text" class="form-control" id="typeCM"  [(ngModel)]="mat.typeCM" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="dateCommande" class="form-label">Date de mise en oeuvre</label>
+            <input class="form-control" id="dateCommande" [(ngModel)]="mat.dateCommande" disabled>
+          </div>
+
+         <hr class="sidebar-divider">
+         <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+          <div class="col-md-6">
+            <label for="etatdecom" class="form-label">Etat de la commande</label>
+            <select class="form-select" id="etatdecom" required [(ngModel)]="mat.etatdecom">
+                <option selected disabled value="">Votre choix ..</option>
+                <option>Pas encore</option>
+                <option>Refusee</option>
+                <option>Acceptee</option>
+              </select>
+          </div>
+        </ng-container> 
+        <ng-container *ngIf="this.roles=='ROLE_USER'">
+          <div class="col-md-6">
+            <label for="etatdecom" class="form-label">Etat de la commande</label>
+            <select class="form-select" id="etatdecom" required [(ngModel)]="mat.etatdecom">
+                <option selected disabled value="">Votre choix ..</option>
+                <option disabled>Pas encore</option>
+                <option disabled>Refusee</option>
+                <option disabled>Acceptee</option>
+              </select>
+          </div>
+        </ng-container>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="remarque" class="form-label">Remarque</label>
+            <textarea class="form-control" id="remarque" style="height: 100px" [(ngModel)]="mat.remarque"></textarea>
+  
+        </div>
+        <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="userId" class="form-label">Identifiant de l'Utilisateur</label>
+            <input type="number" class="form-control" id="userId" [(ngModel)]="mat.userId" disabled>
+          </div>
+        <hr class="sidebar-divider">
+        <div class="col-md-6" style="margin-left:250px">
+        <a (click)="updateTutorial();newMat()" class="btn btn-shit btn-block"> Submit le changement de cette Commande</a>
+        </div>
+       <!-- <div *ngIf="submitted">
+            <hr class="sidebar-divider">
+            <h4>Materiel est bien submité!</h4>
+           <div class="col-md-6" style="margin-left:250px">
+            <a (click)="newMat()" class="btn btn-shit btn-block"> Ajouter le nouveau matériel</a>
+            </div> 
+        </div>-->
+    </div>
+        </div>
+        </div>
+        </div>
+        

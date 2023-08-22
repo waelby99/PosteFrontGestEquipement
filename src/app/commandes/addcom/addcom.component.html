@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Passer une Commande</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Passer une Commande</h6>
+    </div>
+    <div class="card-body">
+<div *ngIf="!submitted">
+        <div class="col-md-6" hidden>
+            <label for="idCom" class="form-label">Identifiant de la commande</label>
+            <input type="number" class="form-control" id="idCom" [(ngModel)]="commande.idCom">
+          </div>
+          
+          <div class="col-md-6">
+            <label for="typeCM" class="form-label">Type d'équipement de la commande</label>
+            <input type="text" class="form-control" id="typeCM" placeholder="Ordinateur , Serveur ...." required [(ngModel)]="commande.typeCM">
+          </div>
+          
+          <hr class="sidebar-divider">
+          <div class="col-md-6" hidden>
+            <label for="dateCommande" class="form-label">Date de la commande</label>
+            <input type="date" class="form-control" id="dateCommande" required [(ngModel)]="commande.dateCommande">
+          </div>
+          <hr class="sidebar-divider" hidden>
+          <div class="col-md-6">
+            <label for="etatdecom" class="form-label">Etat de la commande</label>
+            <select class="form-select" id="etatdecom" required [(ngModel)]="commande.etatdecom">
+                
+                <option selected>Pas encore</option>
+                <option disabled>Refusé</option>
+                <option disabled>Acceptée</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="remarque" class="form-label">Remarque</label>
+            <textarea class="form-control" placeholder="Votre Remarque" id="remarque" style="height: 100px" [(ngModel)]="commande.remarque"></textarea>
+  
+        </div>
+        <hr class="sidebar-divider" hidden>
+          <div class="col-md-6" hidden>
+            <label for="userId" class="form-label">Identifiant de l'Utilisateur</label>
+            <input type="number" class="form-control" id="userId" [value]="id" required [(ngModel)]="commande.userId" >
+          </div>
+        <hr class="sidebar-divider">
+        <div class="col-md-6" style="margin-left:250px">
+        <a (click)="saveCommande();newMat()" class="btn btn-shit btn-block"> Passer la commande</a>
+        </div>
+       
+    </div>
+        </div>
+        </div>
+        </div>

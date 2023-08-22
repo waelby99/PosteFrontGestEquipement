@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Modifier vos coordonnées</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modifier vos coordonnées</h6>
+    </div>
+    <div class="card-body">
+<div>
+       
+          <div class="col-md-6">
+            <label for="username" class="form-label">Nom d'Utilisateur</label>
+            <input type="username" class="form-control" id="username"  [(ngModel)]="mat.username">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="email" class="form-label">E-mail</label>
+            <input class="form-control" id="email" [(ngModel)]="mat.email">
+          </div>
+         <hr class="sidebar-divider">
+         
+        <!--
+          <div class="col-md-6">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="mat.password">
+  
+        </div>
+        <hr class="sidebar-divider">-->
+          <div class="col-md-6">
+            <label for="userId" class="form-label">Identifiant du service</label>
+            <input type="number" class="form-control" id="userId" [(ngModel)]="mat.serviceIdService" disabled>
+          </div>
+        <br>
+        <div class="col-md-6" style="margin-left:250px">
+        <a (click)="updateTutorial();newMat()" class="btn btn-shit btn-block"> Submit le changement</a>
+        </div>
+       
+    </div>
+        </div>
+        </div>
+        </div>
+        

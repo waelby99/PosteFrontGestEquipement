@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Ajouter un Utilisateur</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Ajouter un Utilisateur</h6>
+    </div>
+    <div class="card-body">
+<div >
+        
+         
+          <div class="col-md-6">
+            <label for="username" class="form-label">Nom d'Utilistaeur</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3"
+            maxlength="20"
+            #username="ngModel">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel" required>
+          </div>
+        
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="password" class="form-label">Mot de Passe</label>
+            <input type="password" class="form-control" name="password"   [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="userId" class="form-label" style="margin-right: 210px;margin-bottom: 20px;">L'identifiant du service</label>
+            <a class="btn btn-sm btn-shit shadow-sm" (click)="openPopup()"> Liste des Services</a> 
+            <input type="number" class="form-control" nom="serviceIdService" min="1" max="2" [(ngModel)]="form.serviceIdService" required>
+          </div>
+          <hr class="sidebar-divider">
+          
+          <div class="col-md-6">
+            <label for="role" class="form-label">Role</label>
+            <select class="form-select" id="role" required [(ngModel)]="form.roles" required>
+            
+                <option>admin</option>
+                <option>user</option>
+                
+              </select>
+          </div>
+        <hr class="sidebar-divider">
+        <div class="col-md-6" style="margin-left:250px">
+        <a  (click)="onSubmit()" class="btn btn-shit btn-block"> Submit le nouveau User</a>
+        </div>
+       <!-- <div *ngIf="submitted">
+            <hr class="sidebar-divider">
+            <h4>Materiel est bien submité!</h4>
+           <div class="col-md-6" style="margin-left:250px">
+            <a (click)="newMat()" class="btn btn-shit btn-block"> Ajouter le nouveau matériel</a>
+            </div> 
+        </div>-->
+    </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+        <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Listes des Utilisateurs</h4>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive text-center">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Identifiant Service</th>
+                            <th>Nom du Service</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let i of ToShow | filter : idService | orderBy: 'idService'">
+                              <td>{{i.idService}}</td>
+                              <td>{{i.nomService}}</td>
+                            
+      </tr>
+      </tbody>
+                        </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-shit" (click)="closePopup()">
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,74 @@
+
+
+<div class="container-fluid">
+    <div class="container-fluid">
+      <h1 class="h3 mb-2 text-gray-800">Détails du service</h1>
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Service</h6>
+          </div>
+          
+          <div class="card-body" *ngIf="serv">
+              
+            <p>Identifiant du service : {{serv.idService}} </p> 
+            <p>Nom du service :  {{serv.nomService}}</p>
+            Les utilisateurs appartiennent à ce service
+            <div class="table-responsive text-center">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr class="text-gray-800">
+                          <th>Identifiant</th>
+                          <th>Username</th>
+                          <th>E-mail</th>
+                          
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let i of serv.userss | orderBy: 'id'">
+                          <th>{{i.id}}</th>
+                          <th>{{i.username}}</th>
+                          <th>{{i.email}}</th>
+                          
+                      </tr>    
+                  </tbody>
+              </table>
+          </div>
+          </div>
+          <a (click)="openPopup()" class="btn btn-warning" style="margin-left: 250px;margin-right:250px;" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+            <fa-icon [icon]="faEdit"></fa-icon>
+            Modifier
+        </a>    
+        <br>    
+      </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modfier ce service</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-6">
+            <label for="idService" class="form-label">Identifiant du Service</label>
+            <input type="number" class="form-control" id="idService" [(ngModel)]="serv.idService" disabled>
+          </div>
+          <div class="col-md-6">
+            <label for="nomService" class="form-label">Nom du Service</label>
+            <input type="text" class="form-control" id="nomService" [(ngModel)]="serv.nomService">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" 
+                (click)="closePopup();updateTutorial()">
+          Submit les changements
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

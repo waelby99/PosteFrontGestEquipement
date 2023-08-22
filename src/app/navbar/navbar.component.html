@@ -1,0 +1,116 @@
+<div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <br>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon">
+            <img style="margin-left: 20px; " src="/assets/aaa.jpg" width="50" height="50" class="rounded float-left align-middle" alt="">
+          </div><br>
+          <div class="sidebar-brand-text mx-3">La Poste Tunisienne </div>
+      </a>
+      
+      <hr class="sidebar-divider my-0">
+      
+      <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <fa-icon [icon]="faHome" style="margin-right: 10px;"></fa-icon>
+              <span>Acceuil</span></a>
+      </li>
+      
+      <hr class="sidebar-divider">
+      
+      <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="users" style="margin-right: 10px;">
+            <fa-icon [icon]="faUser" style="margin-right: 10px;"></fa-icon>
+              <span>Utilisateurs</span></a>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="matadmin" style="margin-right: 10px;">
+          <fa-icon [icon]="faWrench" style="margin-right: 10px;"></fa-icon>
+            <span>Mes matériaux</span></a>
+    </li>
+  </ng-container>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="materiel">
+          <fa-icon [icon]="faTools" style="margin-right: 10px;"></fa-icon>
+            <span>Matériaux</span></a>
+    </li>
+      
+      <hr class="sidebar-divider">
+     
+      <li class="nav-item">
+        <a class="nav-link" routerLink="commandes">
+          <fa-icon [icon]="faCopy" style="margin-right: 10px;"></fa-icon>
+            <span>Commandes</span></a>
+    </li>
+    <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+      <li class="nav-item">
+          <a class="nav-link" routerLink="maintenance">
+            <fa-icon [icon]="faToolbox" style="margin-right: 10px;"></fa-icon>
+              <span>Maintenances effectuées</span></a>
+      </li>
+      </ng-container>
+      <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+      <li class="nav-item">
+          <a class="nav-link" routerLink="ctrltech">
+            <fa-icon [icon]="faHeartBroken" style="margin-right: 10px;"></fa-icon>
+              <span>Matériels endommagés</span></a>
+      </li>
+    </ng-container>
+      <hr class="sidebar-divider d-none d-md-block">
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="apropos">
+          <fa-icon [icon]="faQuestion" style="margin-right: 10px;"></fa-icon>
+            <span>A propos </span></a>
+    </li>
+  </ul>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+          </button>
+          <div *ngIf="mat">
+          <h4 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 text-warning font-weight-bold">
+          {{mat.nomDirection}}
+          </h4>
+        </div>
+          
+          
+          <ul class="navbar-nav ml-auto">
+      
+              <hr class="navbar-divider d-none d-md-block">
+              <li class="nav-item dropdown no-arrow">
+                <a class="small font-weight-bold" style="color:#f6c23e;" (click)="detailMat()" id="param" role="button"
+                     aria-haspopup="true" aria-expanded="false">
+                    <fa-icon [icon]="faUserCog" style="margin-right: 10px;"></fa-icon>
+                    <span style="margin-right: 20px;">Parametres</span>
+                </a>
+            
+            </li> 
+            <li class="nav-item dropdown no-arrow">
+              <a (click)="logout()" class="small font-weight-bold" style="color:#f6c23e;"href="#" id="logoutt" role="button"
+                   aria-haspopup="true" aria-expanded="false">
+                  <fa-icon [icon]="faSignOutAlt" style="margin-right: 10px;"></fa-icon>
+                          Se déconnecter
+              </a>
+          </li> 
+          </ul>
+      </nav>
+      
+    <router-outlet>
+        
+    </router-outlet>
+    </div>
+    </div>
+    
+    </div>
+
+    

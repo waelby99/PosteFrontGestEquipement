@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Ajouter un matériel</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Ajouter un matériel</h6>
+    </div>
+    <div class="card-body">
+<div *ngIf="!submitted">
+        <div class="col-md-6" hidden>
+            <label for="idMateriel" class="form-label">Identifiant du matériel</label>
+            <input type="number" class="form-control" [value]="valeur" id="idMateriel" [(ngModel)]="materiel.idMateriel" disabled>
+          </div>
+          <div class="col-md-6">
+            <label for="typeMat" class="form-label">Type du matériel</label>
+            <input type="text" class="form-control" id="typeMat" placeholder="Ordinateur , Serveur ...." required [(ngModel)]="materiel.typeMat">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="marque" class="form-label">Marque</label>
+            <input type="text" class="form-control" id="validationCustomUsername" placeholder="HP , Samsung ...." required [(ngModel)]="materiel.marque">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="dateDeMiseEnOeuvre" class="form-label">Date de mise en oeuvre</label>
+            <input type="date" class="form-control" id="dateDeMiseEnOeuvre" required [(ngModel)]="materiel.dateDeMiseEnOeuvre">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="codeaBarre" class="form-label">Code à Barre</label>
+            <input type="number" class="form-control" id="codeaBarre" placeholder="Exemple : 619875681287125" min="100000000000"
+            max="999999999999"
+            required [(ngModel)]="materiel.codeaBarre">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="emplacement" class="form-label">Emplacement</label>
+            <select class="form-select" id="emplacement" required [(ngModel)]="materiel.emplacement">
+                
+                <option>Bureau 1</option>
+                <option>Bureau 2</option>
+                <option>Bureau 3</option>
+                <option>Bureau 4</option>
+                <option>Bureau 5</option>
+                <option>Bureau 6</option>
+                <option>Bureau 7</option>
+                <option>Bureau 8</option>
+                <option>Bureau 9</option>
+                <option>Bureau 10</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="etat" class="form-label">Etat</label>
+            <select class="form-select" id="etat" required [(ngModel)]="materiel.etat">
+             <!--   <option disabled>En Panne</option>
+                <option disbaled>En Maintenance</option>
+                <option>Endommagé</option>-->
+                <option disbaled>En Oeuvre</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="remarque" class="form-label">Remarque</label>
+            <textarea class="form-control" placeholder="Leave a comment here" id="remarque" style="height: 100px" [(ngModel)]="materiel.remarque"></textarea>
+  
+        </div>
+        <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="userId" class="form-label" style="margin-right: 170px;margin-bottom: 20px;">Identifiant de l'Utilisateur</label>
+            <a class="btn btn-sm btn-shit shadow-sm" (click)="openPopup()"> Liste des Utilisateurs</a> 
+            <input type="number" class="form-control" id="userId" placeholder="Exemple : 1 , 2 .." required [(ngModel)]="materiel.userId">
+            
+          </div><br>
+        <div class="col-md-6" style="margin-left:250px">
+        <a (click)="saveMateriel();newMat()" class="btn btn-shit btn-block"> Submit le nouveau matériel</a>
+        </div>
+       
+    </div>
+        </div>
+        </div>
+        </div>
+
+
+        <div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Listes des Utilisateurs</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive text-center">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let i of ToShow | filter : id | orderBy: 'id'">
+                        <td>{{i.id}}</td>
+                        <td>{{i.username}}</td>
+                        <td>{{i.email}}</td>
+</tr>
+</tbody>
+                  </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-shit" (click)="closePopup()">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Modifier cet matériel</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modifier cet matériel</h6>
+    </div>
+    <div class="card-body">
+<div>
+        <div class="col-md-6">
+            <label for="idMateriel" class="form-label">Identifiant du matériel</label>
+            <input type="number" class="form-control" id="idMateriel"  [(ngModel)]="mat.idMateriel" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="typeMat" class="form-label">Type du matériel</label>
+            <input type="text" class="form-control" id="typeMat"  [(ngModel)]="mat.typeMat" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="marque" class="form-label">Marque</label>
+            <input type="text" class="form-control" id="marque" [(ngModel)]="mat.marque" disabled> 
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="dateDeMiseEnOeuvre" class="form-label">Date de mise en oeuvre</label>
+            <input class="form-control" id="dateDeMiseEnOeuvre" [(ngModel)]="mat.dateDeMiseEnOeuvre" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="codeaBarre" class="form-label">Code à Barre</label>
+            <input type="number" class="form-control" id="codeaBarre" placeholder="Exemple : 619875681287125" [(ngModel)]="mat.codeaBarre" disabled>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="emplacement" class="form-label">Emplacement</label>
+            <select class="form-select" id="emplacement" [(ngModel)]="mat.emplacement" disabled>
+                <option selected disabled></option>
+                <option>Bureau 1</option>
+                <option>Bureau 2</option>
+                <option>Bureau 3</option>
+                <option>Bureau 4</option>
+                <option>Bureau 5</option>
+                <option>Bureau 6</option>
+                <option>Bureau 7</option>
+                <option>Bureau 8</option>
+                <option>Bureau 9</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+          <div class="col-md-6">
+            <label for="etat" class="form-label">Etat</label>
+            <select class="form-select" id="etat" [(ngModel)]="mat.etat">
+                <option selected disabled value="">Votre choix ..</option>
+                <option>En Panne</option>
+                <option>En Maintenance</option>
+                <option>Endommagé</option>
+                <option>En Oeuvre</option>
+              </select>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="this.roles=='ROLE_USER'">
+          <div class="col-md-6">
+            <label for="etat" class="form-label">Etat</label>
+            <select class="form-select" id="etat" [(ngModel)]="mat.etat">
+                <option selected disabled value="">Votre choix ..</option>
+                <option>En Panne</option>
+                <option disabled>En Maintenance</option>
+                <option disabled>Endommagé</option>
+                <option disabled>En Oeuvre</option>
+              </select>
+          </div>
+        </ng-container>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="remarque" class="form-label">Remarque</label>
+            <textarea class="form-control" id="remarque" style="height: 100px" [(ngModel)]="mat.remarque"></textarea>
+  
+        </div>
+        <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="userId" class="form-label">Identifiant de l'Utilisateur</label>
+            <input type="number" class="form-control" id="userId" [(ngModel)]="mat.userId" disabled>
+          </div>
+        <hr class="sidebar-divider">
+        <div class="col-md-6" style="margin-left:250px">
+        <button (click)="updateTutorial()" class="btn btn-shit btn-block" [disabled]="mat.etat=='Endommagé'"> Submit le changement du matériel</button>
+        </div>
+       
+    </div>
+        </div>
+        </div>
+        </div>

@@ -1,0 +1,60 @@
+      
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <form
+        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" [(ngModel)]="typeMat" name="typeMat" class="form-control bg-light border-0 small" placeholder="Chercher dans la liste...">
+          
+        </div>
+    </form>
+      </div>
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Liste des Matériaux endommagés</h1>
+
+      </div>
+
+      
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Liste des Matériaux endommagés</h6>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive text-center">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Id</th>
+                                  <th>Type Matériel</th>
+                                  <th>Marque</th>
+                                  <th>Date De Mise En Ouvre</th>
+                                  <th>Code à Barre</th>
+                                  <th>Emplacement</th>
+                                  <th>Etat</th>
+                                  <th>Remarque</th>
+                                  <th>Infos</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let i of ToShow | filter : typeMat | orderBy: 'idMateriel'">
+                                  <td>{{i.idMateriel}}</td>
+                                  <td>{{i.typeMat}}</td>
+                                  <td>{{i.marque}}</td>
+                                  <td>{{i.dateDeMiseEnOeuvre | date:'yyyy-MM-dd'}}</td>
+                                  <td>{{i.codeaBarre}}</td>
+                                  <td>{{i.emplacement}}</td>
+                                  <td>{{i.etat}}</td>
+                                  <td>{{i.remarque}}</td>
+                                  <td>
+                                    <a (click)="detailMat(i.idMateriel)" target="blank" class="btn btn-shit btn-circle btn-sm">
+                                        <fa-icon [icon]="faInfoCircle"></fa-icon>
+                                    </a>
+                                  </td>
+                              </tr>    
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+      

@@ -1,0 +1,70 @@
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <h1 class="h3 mb-2 text-gray-800">Détails du matériel</h1>
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Détail</h6>
+              </div>
+              
+              <div class="card-body" *ngIf="mat">
+                  
+                <p>Identifiant du ce matériel : {{mat.idMateriel}} </p> 
+                <p>Type du matériel : {{mat.typeMat}}</p>
+                <p>Marque : {{mat.marque}}</p>
+                <p>La date de mise en oeuvre : {{mat.dateDeMiseEnOeuvre | date:'yyyy-MM-dd'}}</p>
+                <p>Code à Barre : {{mat.codeaBarre}}</p>
+                <p>Emplacement : {{mat.emplacement}}</p>
+                <p>Etat : {{mat.etat}}</p>
+                <p>Remarque : {{mat.remarque}}</p>
+                <ng-container *ngIf="this.roles=='ROLE_ADMIN'">
+                <p>L'utilisateur de ce matériel : {{user}}</p>
+                
+                <p>Les maintenances qui ont subit ce matériel : </p>
+                <div class="table-responsive text-center">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                            <th>Identifiant du maintenance</th>
+                              <th>Date de maintenance</th>
+                              <th>Intervenant</th>
+                              <th>Cette maintetnace est issue de</th>
+                              <th>Durée(en heures)</th>
+                              <th>Etat</th>
+                              <th>Remarque</th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let i of sep.maintss | orderBy: 'idMaint'">
+                            <td>{{i.idMaint}}</td>
+                              <td>{{i.datemaint | date:'yyyy-MM-dd'}}</td>
+                              <td>{{i.intervenant}}</td>
+                              <td>{{i.issuede}}</td>
+                              <td>{{i.duree}} Heures</td>
+                              <td>{{i.etat}}</td>
+                              <td>{{i.remarque}}</td>
+                              <td></td>
+                          </tr> 
+                             
+                      </tbody>
+                  </table>
+              </div>
+                </ng-container>
+              </div>
+              <ng-container *ngIf="this.roles=='ROLE_ADMIN'"> <button (click)="edit(mat.idMateriel)" class="btn btn-warning"  [disabled]="mat.etat=='Endommagé'" style="margin-left: 250px;margin-right:250px;">
+                <fa-icon [icon]="faEdit"></fa-icon>
+                Modifier
+              </button>
+            </ng-container>
+            <ng-container *ngIf="this.roles=='ROLE_USER'"> <button (click)="edit(mat.idMateriel)" [disabled]="mat.etat!='En Oeuvre'" class="btn btn-warning" style="margin-left: 250px;margin-right:250px;">
+              <fa-icon [icon]="faEdit"></fa-icon>
+              Modifier
+            </button>
+          </ng-container>
+            <br>
+              
+          </div>
+      </div>
+  </div>
+  
+  

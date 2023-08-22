@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="container-fluid">
+      <h1 class="h3 mb-2 text-gray-800">Détails du maintenance</h1>
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Détail</h6>
+          </div>
+          
+          <div class="card-body" *ngIf="mat">
+              
+            <p>Identifiant du cette maintenance : {{mat.idMaint}} </p> 
+            <p>Date de cette maintenance : {{mat.datemaint | date:'yyyy-MM-dd'}}</p>
+            <p>Intervenant : {{mat.intervenant}}</p>
+            <p>Issue d'une : {{mat.issuede}}</p>
+            <p>Duree : {{mat.duree}} Heures</p>
+            <p>Etat du maintenance : {{mat.etat}}</p>
+            <p>Remarque : {{mat.remarque}}</p>
+            <p>Le matériel qui a subit cette maintenance : {{user}}</p>
+            
+          </div>
+          <button [disabled]="mat.etat=='Maintenance Termine'" (click)="edit(mat.idMaint)" class="btn btn-warning" style="margin-left: 250px;margin-right:250px;">
+            <fa-icon [icon]="faEdit"></fa-icon>
+            Modifier 
+        </button>
+        <br>
+          
+      </div>
+  </div>
+</div>
+

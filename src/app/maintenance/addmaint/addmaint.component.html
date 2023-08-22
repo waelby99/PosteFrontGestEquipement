@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Ajouter une Maintenance</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Ajouter une Maintenance</h6>
+    </div>
+    <div class="card-body">
+<div *ngIf="!submitted">
+        <div class="col-md-6" hidden>
+            <label for="idMaint" class="form-label">Identifiant du maintenance</label>
+            <input type="number" [value]="valeur" class="form-control" id="idMaint" [(ngModel)]="materiel.idMaint">
+          </div>
+          <div class="col-md-6">
+            <label for="datemaint" class="form-label">Date du maintenance</label>
+            <input type="date" class="form-control" id="datemaint" required [(ngModel)]="materiel.datemaint">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="intervenant" class="form-label">Intervenant</label>
+            <input type="text" class="form-control" id="intervenant" required [(ngModel)]="materiel.intervenant">
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="issuede" class="form-label">Etat</label>
+            <select class="form-select" id="issuede" required [(ngModel)]="materiel.issuede">
+
+                <option>Pannes</option>
+                <option>Controle Technique</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="duree" class="form-label">Durée (en heures)</label>
+            <input type="number" class="form-control" id="duree" value="0" required [(ngModel)]="materiel.duree">
+          </div>
+          
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="etat" class="form-label">Etat de la maintenance</label>
+            <select class="form-select" id="etat" required [(ngModel)]="materiel.etat">
+                <option selected disabled value="">Votre choix ..</option>
+                <option>Maintenance En cours</option>
+                <option disabled>Maintenance Termine</option>
+              </select>
+          </div>
+          <hr class="sidebar-divider">
+          <div class="col-md-6">
+            <label for="remarque" class="form-label">Remarque</label>
+            <textarea class="form-control" placeholder="Votre remarque" id="remarque" style="height: 100px" [(ngModel)]="materiel.remarque"></textarea>
+  
+        </div>
+        <hr class="sidebar-divider">
+          <div class="col-md-6">
+            
+            <label for="userId" class="form-label" style="margin-right: 200px;margin-bottom: 20px;">Identifiant du Materiel</label>
+            <a class="btn btn-sm btn-shit shadow-sm" (click)="openPopup()">Liste des matériaux</a> 
+            <input type="number" class="form-control" id="materielIdMateriel" required [(ngModel)]="materiel.materielIdMateriel">
+          </div>
+        <hr class="sidebar-divider">
+        <div class="col-md-6" style="margin-left:250px">
+        <a (click)="saveMateriel();newMat()" class="btn btn-shit btn-block"> Submit le nouveau équipement </a>
+        </div>
+       
+    </div>
+        </div>
+        </div>
+        </div>
+    
+
+
+        <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Listes des Utilisateurs</h4>
+              <button type="button" class="btn btn-danger btn-circle" (click)="closePopup()">
+                X
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive text-center">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Matériel</th>
+                            <th>Code à barre</th>
+                            <th>Emplacement</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let i of ToShow | filter : idMateriel | orderBy: 'idMateriel'">
+                              <td>{{i.idMateriel}}</td>
+                              <td>{{i.typeMat}}</td>
+                              
+                              <td>{{i.codeaBarre}}</td>
+                               <td>{{i.emplacement}}</td>
+                            
+      </tr>
+      </tbody>
+                        </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
